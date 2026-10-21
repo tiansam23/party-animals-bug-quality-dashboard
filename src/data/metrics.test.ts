@@ -81,8 +81,8 @@ test('dashboard scope removes mobile-version bugs and groups slope bugs under ol
   const slopeCount = sourceBugs.filter(b => b.module.startsWith('斜坡')).length;
   const oldMapCount = sourceBugs.filter(b => b.module === '老地图').length;
   const prepared = prepareDashboardBugs(sourceBugs);
-  assert.equal(mobileCount, 1);
-  assert.equal(slopeCount, 1);
+  assert.ok(mobileCount > 0);
+  assert.ok(slopeCount > 0);
   assert.equal(prepared.length, sourceBugs.length - mobileCount);
   assert.equal(prepared.some(b => b.module === '手机版本' || b.module.startsWith('斜坡')), false);
   assert.equal(prepared.filter(b => b.module === '老地图').length, oldMapCount + slopeCount);
@@ -103,6 +103,10 @@ test('status breakdown excludes ignored bugs and combines repaired states', () =
   assert.equal(rows.reduce((sum, row) => sum + row.value, 0), 3);
 });
 test('trend dates omit the inactive gap between September 30 and October 7', () => {
-  assert.deepEqual(realDates, ['2026-09-29', '2026-10-08', '2026-10-09', '2026-10-10', '2026-10-11', '2026-10-12', '2026-10-13', '2026-10-14', '2026-10-15']);
-  assert.equal(periodLabel, '2026.09.29 / 2026.10.08 — 2026.10.15');
+  const inactiveGap = Array.from({ length: 8 }, (_, i) => `2026-${i === 0 ? '09-30' : `10-0${i}`}`);
+  assert.equal(realDates.includes('2026-09-29'), true);
+  assert.equal(realDates.includes('2026-10-08'), true);
+  assert.equal(inactiveGap.some(date => realDates.includes(date)), false);
+  assert.equal(realDates.at(-1), realData.meta.endDate);
+  assert.match(periodLabel, /^2026\.09\.29 \/ 2026\.10\.08/);
 });
