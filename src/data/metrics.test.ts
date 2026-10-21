@@ -75,15 +75,19 @@ test('Shanghai day boundary, priority history and partial-day cutoff are respect
   assert.deepEqual(rows.map(r=>r.p01),[0,1]);
   assert.deepEqual(rows.map(r=>r.closed),[0,0]);
 });
-test('dashboard scope removes mobile-version bugs and groups slope bugs under old maps', () => {
+test('dashboard scope removes mobile bugs and groups slope and unassigned modules', () => {
   const sourceBugs = realData.bugs as Bug[];
   const mobileCount = sourceBugs.filter(b => b.module === '手机版本').length;
   const slopeCount = sourceBugs.filter(b => b.module.startsWith('斜坡')).length;
   const oldMapCount = sourceBugs.filter(b => b.module === '老地图').length;
+  const unassignedCount = sourceBugs.filter(b => b.module === '未填写所属项目').length;
+  const milkBarCount = sourceBugs.filter(b => b.module === '奶吧').length;
   const prepared = prepareDashboardBugs(sourceBugs);
   assert.equal(prepared.length, sourceBugs.length - mobileCount);
   assert.equal(prepared.some(b => b.module === '手机版本' || b.module.startsWith('斜坡')), false);
   assert.equal(prepared.filter(b => b.module === '老地图').length, oldMapCount + slopeCount);
+  assert.equal(prepared.some(b => b.module === '未填写所属项目'), false);
+  assert.equal(prepared.filter(b => b.module === '奶吧').length, milkBarCount + unassignedCount);
   assert.deepEqual(prepared, dashboardBugs);
   assert.equal(sourceMeta.recordCount, prepared.length);
 });

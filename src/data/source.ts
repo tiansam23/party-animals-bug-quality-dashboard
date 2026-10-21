@@ -3,13 +3,20 @@ import type { Bug, BugSource } from './model';
 export function prepareDashboardBugs(bugs: Bug[]): Bug[] {
   return bugs
     .filter(bug => bug.module !== '手机版本')
-    .map(bug => bug.module.startsWith('斜坡') ? { ...bug, module: '老地图' } : bug);
+    .map(bug => {
+      const module = bug.module.startsWith('斜坡')
+        ? '老地图'
+        : bug.module === '未填写所属项目'
+          ? '奶吧'
+          : bug.module;
+      return module === bug.module ? bug : { ...bug, module };
+    });
 }
 export const dashboardBugs = prepareDashboardBugs(data.bugs as Bug[]);
 export const sourceMeta = {
   ...data.meta,
   recordCount: dashboardBugs.length,
-  moduleMethod: `${data.meta.moduleMethod}；排除“手机版本”，斜坡项目并入“老地图”`
+  moduleMethod: `${data.meta.moduleMethod}；排除“手机版本”，斜坡项目并入“老地图”，未填写所属项目并入“奶吧”`
 };
 export const allDates = Array.from({ length: Math.round((Date.parse(data.meta.endDate) - Date.parse(data.meta.startDate)) / 86400000) + 1 }, (_, i) => new Date(Date.parse(data.meta.startDate) + i * 86400000).toISOString().slice(0, 10));
 const dateFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });
