@@ -4,11 +4,11 @@
     "url": "https://project.feishu.cn/heo/issueView/MiKW6B9vR",
     "project": "66a5b8796b0cb0f9ff324b93",
     "view": "MiKW6B9vR",
-    "syncedAt": "2026-10-21T15:40:42.232Z",
+    "syncedAt": "2026-10-21T16:34:19.683Z",
     "timeZone": "Asia/Shanghai",
-    "recordCount": 223,
+    "recordCount": 222,
     "startDate": "2026-09-29",
-    "endDate": "2026-10-21",
+    "endDate": "2026-10-22",
     "moduleMethod": "按飞书字段“所属项目”（field_19968c）归类；空值为未填写所属项目",
     "scope": "当前视图成员的历史回放；不代表整个分支历史",
     "statusLabels": [
@@ -55,7 +55,7 @@
     {
       "id": "7128349347",
       "createdAt": "2026-09-29T09:37:20.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P1",
       "currentStatus": "主线测试中",
       "history": [
@@ -94,7 +94,7 @@
     {
       "id": "7128408577",
       "createdAt": "2026-09-29T10:36:42.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P1",
       "currentStatus": "主线测试中",
       "history": [
@@ -1078,7 +1078,7 @@
     {
       "id": "7131505431",
       "createdAt": "2026-10-09T06:28:54.000Z",
-      "module": "斜坡 last stand",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -1171,7 +1171,7 @@
     {
       "id": "7131413452",
       "createdAt": "2026-10-09T07:06:20.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -1202,7 +1202,7 @@
     {
       "id": "7131421956",
       "createdAt": "2026-10-09T07:15:10.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待复现",
       "history": [
@@ -1576,7 +1576,7 @@
     {
       "id": "7131543948",
       "createdAt": "2026-10-09T08:56:59.000Z",
-      "module": "暂不分类",
+      "module": "卡丁车",
       "priority": "P1",
       "currentStatus": "已关闭",
       "history": [
@@ -2089,7 +2089,7 @@
     {
       "id": "7132312470",
       "createdAt": "2026-10-10T08:24:56.000Z",
-      "module": "暂不分类",
+      "module": "角色相关",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -2372,7 +2372,7 @@
     {
       "id": "7133096725",
       "createdAt": "2026-10-12T06:39:15.000Z",
-      "module": "暂不分类",
+      "module": "卡丁车",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -2512,7 +2512,7 @@
     {
       "id": "7133195229",
       "createdAt": "2026-10-12T08:49:06.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -2531,7 +2531,7 @@
     {
       "id": "7133018359",
       "createdAt": "2026-10-12T08:50:15.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -2887,7 +2887,7 @@
     {
       "id": "7134029347",
       "createdAt": "2026-10-13T06:55:03.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待复现",
       "history": [
@@ -2941,7 +2941,7 @@
     {
       "id": "7134204456",
       "createdAt": "2026-10-13T07:46:10.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P3",
       "currentStatus": "待处理",
       "history": [
@@ -2964,7 +2964,7 @@
     {
       "id": "7134583047",
       "createdAt": "2026-10-13T07:58:37.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -3550,7 +3550,7 @@
     {
       "id": "7137782154",
       "createdAt": "2026-10-16T02:45:39.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -3961,37 +3961,6 @@
       ]
     },
     {
-      "id": "7137850481",
-      "createdAt": "2026-10-16T07:28:17.000Z",
-      "module": "手机版本",
-      "priority": "P0",
-      "currentStatus": "主线测试中",
-      "history": [
-        {
-          "at": "2026-10-16T07:28:17.000Z",
-          "status": "待处理"
-        },
-        {
-          "at": "2026-10-21T01:58:21.277Z",
-          "status": "已解决"
-        },
-        {
-          "at": "2026-10-21T01:58:22.788Z",
-          "status": "主线测试中"
-        }
-      ],
-      "priorityHistory": [
-        {
-          "at": "2026-10-16T07:28:17.000Z",
-          "priority": "P1"
-        },
-        {
-          "at": "2026-10-16T07:30:55.204Z",
-          "priority": "P0"
-        }
-      ]
-    },
-    {
       "id": "7137720256",
       "createdAt": "2026-10-16T07:35:43.000Z",
       "module": "老地图",
@@ -4060,7 +4029,7 @@
     {
       "id": "7137911471",
       "createdAt": "2026-10-16T08:14:58.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -4164,7 +4133,7 @@
     {
       "id": "7139445217",
       "createdAt": "2026-10-19T02:49:25.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -4276,7 +4245,7 @@
     {
       "id": "7139308900",
       "createdAt": "2026-10-19T05:49:10.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -4411,7 +4380,7 @@
     {
       "id": "7139515685",
       "createdAt": "2026-10-19T06:51:04.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -4611,7 +4580,7 @@
     {
       "id": "7139695471",
       "createdAt": "2026-10-19T09:09:51.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "主线测试中",
       "history": [
@@ -4638,7 +4607,7 @@
     {
       "id": "7139841955",
       "createdAt": "2026-10-19T09:18:22.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "主线测试中",
       "history": [
@@ -4734,7 +4703,7 @@
     {
       "id": "7140064470",
       "createdAt": "2026-10-19T09:48:35.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -4906,25 +4875,6 @@
       ]
     },
     {
-      "id": "7140491625",
-      "createdAt": "2026-10-20T03:39:21.000Z",
-      "module": "手机版本",
-      "priority": "P2",
-      "currentStatus": "待处理",
-      "history": [
-        {
-          "at": "2026-10-20T03:39:21.000Z",
-          "status": "待处理"
-        }
-      ],
-      "priorityHistory": [
-        {
-          "at": "2026-10-20T03:39:21.000Z",
-          "priority": "P2"
-        }
-      ]
-    },
-    {
       "id": "7140392684",
       "createdAt": "2026-10-20T03:53:23.000Z",
       "module": "教2：黑帆",
@@ -4977,7 +4927,7 @@
     {
       "id": "7140381925",
       "createdAt": "2026-10-20T05:23:37.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -4996,7 +4946,7 @@
     {
       "id": "7140544737",
       "createdAt": "2026-10-20T07:02:08.000Z",
-      "module": "暂不分类",
+      "module": "卡丁车",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -5027,7 +4977,7 @@
     {
       "id": "7140618139",
       "createdAt": "2026-10-20T07:11:03.000Z",
-      "module": "暂不分类",
+      "module": "卡丁车",
       "priority": "P2",
       "currentStatus": "已关闭",
       "history": [
@@ -5127,7 +5077,7 @@
     {
       "id": "7140450349",
       "createdAt": "2026-10-20T08:49:18.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "重新打开",
       "history": [
@@ -5227,7 +5177,7 @@
     {
       "id": "7140674452",
       "createdAt": "2026-10-20T09:06:58.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "主线测试中",
       "history": [
@@ -5381,7 +5331,7 @@
     {
       "id": "7140820227",
       "createdAt": "2026-10-20T09:40:13.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "主线测试中",
       "history": [
@@ -5408,7 +5358,7 @@
     {
       "id": "7140508839",
       "createdAt": "2026-10-20T09:46:29.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -5446,7 +5396,7 @@
     {
       "id": "7140549911",
       "createdAt": "2026-10-20T10:31:31.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "主线测试中",
       "history": [
@@ -5538,7 +5488,7 @@
     {
       "id": "7141484020",
       "createdAt": "2026-10-21T03:29:53.000Z",
-      "module": "暂不分类",
+      "module": "角色相关",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -5557,7 +5507,7 @@
     {
       "id": "7141477970",
       "createdAt": "2026-10-21T03:37:14.000Z",
-      "module": "暂不分类",
+      "module": "角色相关",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -5576,7 +5526,7 @@
     {
       "id": "7141603470",
       "createdAt": "2026-10-21T03:46:10.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -5706,7 +5656,7 @@
     {
       "id": "7141638443",
       "createdAt": "2026-10-21T07:28:51.000Z",
-      "module": "暂不分类",
+      "module": "奶吧",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -5805,7 +5755,7 @@
     {
       "id": "7141846079",
       "createdAt": "2026-10-21T07:59:50.000Z",
-      "module": "暂不分类",
+      "module": "奶吧",
       "priority": "P2",
       "currentStatus": "主线测试中",
       "history": [
@@ -5832,7 +5782,7 @@
     {
       "id": "7141816613",
       "createdAt": "2026-10-21T08:11:40.000Z",
-      "module": "暂不分类",
+      "module": "奶吧",
       "priority": "P2",
       "currentStatus": "主线测试中",
       "history": [
@@ -5940,7 +5890,7 @@
     {
       "id": "7141626828",
       "createdAt": "2026-10-21T08:24:51.000Z",
-      "module": "暂不分类",
+      "module": "奶吧",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -5959,7 +5909,7 @@
     {
       "id": "7141884070",
       "createdAt": "2026-10-21T08:48:16.000Z",
-      "module": "暂不分类",
+      "module": "未填写所属项目",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -5978,7 +5928,7 @@
     {
       "id": "7141861111",
       "createdAt": "2026-10-21T09:08:50.000Z",
-      "module": "暂不分类",
+      "module": "奶吧",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -6035,7 +5985,7 @@
     {
       "id": "7141843718",
       "createdAt": "2026-10-21T09:20:49.000Z",
-      "module": "暂不分类",
+      "module": "角色相关",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -6092,7 +6042,7 @@
     {
       "id": "7141664773",
       "createdAt": "2026-10-21T09:42:23.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "主线测试中",
       "history": [
@@ -6119,7 +6069,7 @@
     {
       "id": "7141750374",
       "createdAt": "2026-10-21T10:06:24.000Z",
-      "module": "暂不分类",
+      "module": "奶吧",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -6157,7 +6107,7 @@
     {
       "id": "7141835396",
       "createdAt": "2026-10-21T10:16:30.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -6176,7 +6126,7 @@
     {
       "id": "7142119478",
       "createdAt": "2026-10-21T10:28:04.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -6195,7 +6145,7 @@
     {
       "id": "7141905337",
       "createdAt": "2026-10-21T10:32:41.000Z",
-      "module": "暂不分类",
+      "module": "狼人杀",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -6252,7 +6202,7 @@
     {
       "id": "7142181335",
       "createdAt": "2026-10-21T11:38:22.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -6366,7 +6316,7 @@
     {
       "id": "7142119248",
       "createdAt": "2026-10-21T13:47:13.000Z",
-      "module": "暂不分类",
+      "module": "老地图",
       "priority": "P2",
       "currentStatus": "待处理",
       "history": [
@@ -6378,6 +6328,25 @@
       "priorityHistory": [
         {
           "at": "2026-10-21T13:47:13.000Z",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "id": "7142154216",
+      "createdAt": "2026-10-21T15:58:49.000Z",
+      "module": "老地图",
+      "priority": "P2",
+      "currentStatus": "待处理",
+      "history": [
+        {
+          "at": "2026-10-21T15:58:49.000Z",
+          "status": "待处理"
+        }
+      ],
+      "priorityHistory": [
+        {
+          "at": "2026-10-21T15:58:49.000Z",
           "priority": "P2"
         }
       ]
