@@ -48,6 +48,7 @@ test('source events are chronological and current states match final events', ()
 });
 
 import realData from './feishu.json';
+import defectTypeData from './defect-types.json';
 import { beforePeriod as realStart, periodEnd as realEnd, dates as realDates, periodLabel, statusLabels, dashboardBugs, prepareDashboardBugs, sourceMeta } from './source';
 test('Feishu snapshot is complete and all historical states reconcile', () => {
   const bugs = realData.bugs as Bug[];
@@ -90,6 +91,19 @@ test('dashboard scope removes mobile bugs and groups slope and unassigned module
   assert.equal(prepared.filter(b => b.module === '奶吧').length, milkBarCount + unassignedCount);
   assert.deepEqual(prepared, dashboardBugs);
   assert.equal(sourceMeta.recordCount, prepared.length);
+});
+test('defect types reproduce the Excel source distribution and cover the dashboard', () => {
+  const byId = defectTypeData.byId as Record<string, string>;
+  const supplementalIds = new Set(defectTypeData.meta.supplementalIds);
+  const workbookValues = Object.entries(byId).filter(([id]) => !supplementalIds.has(id)).map(([, value]) => value);
+  const sourceCounts = workbookValues.reduce<Record<string, number>>((counts, type) => ({ ...counts, [type]: (counts[type] ?? 0) + 1 }), {});
+  assert.equal(workbookValues.length, defectTypeData.meta.recordCount);
+  assert.equal(Object.keys(byId).length, defectTypeData.meta.recordCount + defectTypeData.meta.supplementalRecordCount);
+  assert.deepEqual(sourceCounts, { '画面/渲染': 157, 'UI/交互': 32, '功能/逻辑': 19, '兼容性/适配': 9, '崩溃/卡死': 3, '音频': 1 });
+  assert.equal(byId['7142154216'], '音频');
+  assert.equal(dashboardBugs.every(bug => !!bug.defectType), true);
+  assert.equal(dashboardBugs.filter(bug => bug.defectType === '未分类').length, dashboardBugs.filter(bug => !byId[bug.id]).length);
+  assert.equal(distribution(dashboardBugs, 'defectType').reduce((sum, row) => sum + row.value, 0), dashboardBugs.length);
 });
 test('status breakdown excludes ignored bugs and combines repaired states', () => {
   const sample = [

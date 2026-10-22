@@ -1,5 +1,7 @@
 import data from './feishu.json';
+import defectTypeData from './defect-types.json';
 import type { Bug, BugSource } from './model';
+const defectTypeById = defectTypeData.byId as Record<string, string>;
 export function prepareDashboardBugs(bugs: Bug[]): Bug[] {
   return bugs
     .filter(bug => bug.module !== '手机版本')
@@ -9,14 +11,15 @@ export function prepareDashboardBugs(bugs: Bug[]): Bug[] {
         : bug.module === '未填写所属项目'
           ? '奶吧'
           : bug.module;
-      return module === bug.module ? bug : { ...bug, module };
+      return { ...bug, module, defectType: defectTypeById[bug.id] ?? '未分类' };
     });
 }
 export const dashboardBugs = prepareDashboardBugs(data.bugs as Bug[]);
 export const sourceMeta = {
   ...data.meta,
   recordCount: dashboardBugs.length,
-  moduleMethod: `${data.meta.moduleMethod}；排除“手机版本”，斜坡项目并入“老地图”，未填写所属项目并入“奶吧”`
+  moduleMethod: `${data.meta.moduleMethod}；排除“手机版本”，斜坡项目并入“老地图”，未填写所属项目并入“奶吧”`,
+  defectTypeMethod: `按 ${defectTypeData.meta.source} 的“${defectTypeData.meta.sheet}”工作表“缺陷类型”字段归类；新增未入表记录按飞书工作项内容补充`
 };
 export const allDates = Array.from({ length: Math.round((Date.parse(data.meta.endDate) - Date.parse(data.meta.startDate)) / 86400000) + 1 }, (_, i) => new Date(Date.parse(data.meta.startDate) + i * 86400000).toISOString().slice(0, 10));
 const dateFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });

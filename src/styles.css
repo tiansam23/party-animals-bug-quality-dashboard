@@ -90,4 +90,5 @@
 .daily-change b{font-size:13px;font-weight:500;letter-spacing:0;white-space:nowrap}
 .daily-change small{font-size:9px;margin-left:5px;color:currentColor}
 .neutral{color:#8796aa!important}
-@media(min-width:951px){.summary-panel{grid-column:1 / span 2;grid-row:9 / span 4}.status-panel{grid-column:3 / span 2;grid-row:9 / span 4}}
+@media(min-width:951px){.defect-type-panel{grid-column:3 / span 2;grid-row:5 / span 4}.priority-panel{grid-column:3 / span 2;grid-row:9 / span 4}.status-panel{grid-column:1;grid-row:9 / span 4}.summary-panel{grid-column:2;grid-row:9 / span 4}}
+@media(max-width:950px){.defect-type-panel{grid-column:auto;grid-row:auto;height:290px}}

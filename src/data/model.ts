@@ -3,7 +3,7 @@ export const statuses = ['待处理', '处理中', '待验证', '已关闭', '�
 export type Priority = typeof priorities[number];
 export type Status = string;
 export interface StatusEvent { at: string; status: Status }
-export interface Bug { id: string; createdAt: string; module: string; priority: Priority; currentStatus: Status; history: StatusEvent[]; priorityHistory?: { at: string; priority: Priority }[] }
+export interface Bug { id: string; createdAt: string; module: string; defectType?: string; priority: Priority; currentStatus: Status; history: StatusEvent[]; priorityHistory?: { at: string; priority: Priority }[] }
 export interface BugSource { load(): Promise<Bug[]> }
 export const isOpen = (status: Status | undefined) => !!status && status !== '已关闭' && status !== '不处理';
 export function statusAt(bug: Bug, timestamp: string): Status | undefined {
@@ -20,9 +20,9 @@ export function summarize(bugs: Bug[]) {
   const p1 = open.filter(b => b.priority === 'P1').length;
   return { total: bugs.length, valid: valid.length, open: open.length, closed: valid.length - open.length, p0, p1, p01: p0 + p1 };
 }
-export function distribution(bugs: Bug[], field: 'module' | 'priority' | 'currentStatus') {
+export function distribution(bugs: Bug[], field: 'module' | 'defectType' | 'priority' | 'currentStatus') {
   const counts = new Map<string, number>();
-  bugs.forEach(b => counts.set(b[field], (counts.get(b[field]) ?? 0) + 1));
+  bugs.forEach(b => { const value = b[field] ?? '未分类'; counts.set(value, (counts.get(value) ?? 0) + 1); });
   return Array.from(counts, ([name, value]) => ({ name, value, percent: bugs.length ? value / bugs.length * 100 : 0 })).sort((a, b) => b.value - a.value);
 }
 export function statusBreakdown(bugs: Bug[]) {
