@@ -19,7 +19,7 @@ export const sourceMeta = {
   ...data.meta,
   recordCount: dashboardBugs.length,
   moduleMethod: `${data.meta.moduleMethod}；排除“手机版本”，斜坡项目并入“老地图”，未填写所属项目并入“奶吧”`,
-  defectTypeMethod: `按 ${defectTypeData.meta.source} 的“${defectTypeData.meta.sheet}”工作表“缺陷类型”字段归类；工作项 7142154216 按内容补为音频；其他未匹配记录显示为“未分类”`
+  defectTypeMethod: `按 ${defectTypeData.meta.source} 的“${defectTypeData.meta.sheet}”工作表“缺陷类型”字段归类；按工作项 ID 对应当前视图全部 221 条缺陷`
 };
 export const allDates = Array.from({ length: Math.round((Date.parse(data.meta.endDate) - Date.parse(data.meta.startDate)) / 86400000) + 1 }, (_, i) => new Date(Date.parse(data.meta.startDate) + i * 86400000).toISOString().slice(0, 10));
 const dateFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });
