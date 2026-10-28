@@ -4,8 +4,17 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 const exec = promisify(execFile);
 const project = '66a5b8796b0cb0f9ff324b93', view = 'MiKW6B9vR';
 async function cli(args) {
-  const { stdout } = await exec('meegle', [...args, '--format', 'json'], { maxBuffer: 20 * 1024 * 1024 });
-  const data = JSON.parse(stdout); if (data.error) throw new Error(JSON.stringify(data.error)); return data;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const { stdout } = await exec('meegle', [...args, '--format', 'json'], { maxBuffer: 20 * 1024 * 1024 });
+      const data = JSON.parse(stdout); if (data.error) throw new Error(JSON.stringify(data.error)); return data;
+    } catch (error) {
+      const detail = `${error.message} ${error.stderr ?? ''}`;
+      if (attempt === 2 || !/EOF|ECONNRESET|ETIMEDOUT|socket hang up|connection reset/i.test(detail)) throw error;
+      console.log(`临时连接中断，重试 ${attempt + 1}/2`);
+      await new Promise(resolve => setTimeout(resolve, (attempt + 1) * 1000));
+    }
+  }
 }
 const auth = await cli(['auth','status']);
 if (!auth.authenticated || auth.host !== 'project.feishu.cn') throw new Error('请先运行 meegle auth login --device-code --host project.feishu.cn');

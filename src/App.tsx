@@ -3,7 +3,7 @@ import type { EChartsOption } from 'echarts';
 import Chart from './components/Chart';
 import { distribution, isOpen, priorities, snapshot, statusBreakdown, summarize, trend, type Bug } from './data/model';
 import { activityDates, allDates, source, periodEnd, sourceMeta, syncLabel } from './data/source';
-const C = { blue: '#568bed', green: '#52bd9b', yellow: '#edc46b', red: '#ec707b', orange: '#e79d66', muted: '#6d7c93' };
+const C = { blue: '#568bed', green: '#52bd9b', yellow: '#edc46b', red: '#ec707b', orange: '#e79d66', purple: '#ac9be4', muted: '#6d7c93' };
 const priorityColors = [C.red, C.orange, C.blue, '#65738b'];
 const textStyle = { color: '#8190a6', fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', fontSize: 11 };
 const tooltip = { backgroundColor: '#1c2636', borderColor: '#354259', textStyle: { color: '#e5eaf2', fontSize: 12 }, padding: 14 };
@@ -58,7 +58,7 @@ export default function App() {
   };
   const trendOption = useMemo<EChartsOption>(() => ({
     animation: false, textStyle, media: [{ query: { maxWidth: 500 }, option: { grid: { top: 94 }, xAxis: { axisLabel: { interval: Math.max(0, Math.ceil(rangeDates.length / 4) - 1) } } } }, { option: { grid: { top: 66 }, xAxis: { axisLabel: { interval: desktopDateInterval } } } }], tooltip: { ...tooltip, trigger: 'axis', axisPointer: { type: 'cross', label: { backgroundColor: '#334259' } } },
-    legend: { top: 0, left: 0, itemWidth: 13, itemHeight: 8, itemGap: 22, textStyle: { color: '#a5b1c3', fontSize: 11 }, data: ['每日新增', '每日关闭', '未关闭存量', '未关闭 P0/P1'] },
+    legend: { top: 0, left: 0, itemWidth: 13, itemHeight: 8, itemGap: 22, textStyle: { color: '#a5b1c3', fontSize: 11 }, data: ['每日新增', '每日关闭', '每日已解决', '未关闭存量', '未关闭 P0/P1'] },
     grid: { left: 43, right: 45, top: 66, bottom: 70 },
     xAxis: { ...axis, type: 'category', data: rangeDates.map(d => d.slice(5).replace('-', '/')), axisLabel: { color: '#74839a', interval: desktopDateInterval }, splitLine: { show: false } },
     yAxis: [{ ...axis, type: 'value', name: '每日数量', nameTextStyle: { color: '#74839a', padding: [0, 0, 8, 0] }, min: 0 }, { ...axis, type: 'value', name: '未关闭存量', nameTextStyle: { color: '#74839a', padding: [0, 0, 8, 0] }, min: 0, splitLine: { show: false } }],
@@ -66,6 +66,7 @@ export default function App() {
     series: [
       { name: '每日新增', type: 'bar', data: points.map(p => p.added), itemStyle: { color: C.blue, opacity: .78, borderRadius: [2, 2, 0, 0] }, barMaxWidth: 8, barGap: '25%' },
       { name: '每日关闭', type: 'bar', data: points.map(p => p.closed), itemStyle: { color: C.green, opacity: .72, borderRadius: [2, 2, 0, 0] }, barMaxWidth: 8 },
+      { name: '每日已解决', type: 'line', yAxisIndex: 0, data: points.map(p => p.resolved), symbol: 'none', smooth: false, lineStyle: { width: 2, color: C.purple }, itemStyle: { color: C.purple }, z: 4 },
       ...([{ name: '未关闭存量', key: 'open', color: C.yellow, width: 3 }, { name: '未关闭 P0/P1', key: 'p01', color: C.red, width: 1.8 }] as const).map(s => ({ name: s.name, type: 'line' as const, yAxisIndex: 1, data: points.map(p => p[s.key]), symbol: 'none', smooth: false, lineStyle: { width: s.width, color: s.color }, itemStyle: { color: s.color }, z: 5 }))
     ]
   }), [desktopDateInterval, points, rangeDates]);
@@ -78,7 +79,7 @@ export default function App() {
     <div className="dashboard-grid">
       <Panel className="trend-panel" title="Bug 收敛趋势" eyebrow="BUG CONVERGENCE" action={<span className="subtle-badge"><i/>北京时间</span>}>
         <div className="trend-stats"><div className="backlog-stat"><span>未关闭 Bug 存量</span><strong>{summary.open}<small>个</small></strong><div className={`daily-change ${dailyChange < 0 ? 'positive' : dailyChange > 0 ? 'negative' : 'neutral'}`}><span>较昨日变化</span><b>{dailyChange < 0 ? '↘' : dailyChange > 0 ? '↗' : '—'} {dailyChange > 0 ? '+' : ''}{dailyChange}<small>个</small></b></div></div><span className="trend-note">历史日取日末 · 当日截至同步时刻</span></div>
-        <Chart option={trendOption} label="当前视图缺陷的每日新增、关闭及未关闭总量、P0/P1合并存量趋势"/>
+        <Chart option={trendOption} label="当前视图缺陷的每日新增、关闭、已解决及未关闭总量、P0/P1合并存量趋势"/>
         <div className="panel-foot"><span><i className="hint-dot"/>点击图例显示 / 隐藏数据</span><span>拖动滑块缩放时间范围</span></div>
       </Panel>
       <Panel className="module-panel" title="Bug 模块分布" eyebrow="MODULE DISTRIBUTION" action={<Toggle value={moduleOpen} onChange={setModuleOpen}/>}><div className="mini-caption"><span>{moduleOpen ? '未关闭' : '有效'} Bug · {moduleBugs.length} 个</span><span title={sourceMeta.moduleMethod}>所属项目 · {modules.length} 项 · 完整显示</span></div><div className="module-chart"><Chart option={moduleOption} label="按所属项目归类，数量降序排列的Bug模块分布"/></div></Panel>

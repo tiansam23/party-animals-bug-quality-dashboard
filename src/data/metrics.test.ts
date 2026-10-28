@@ -36,6 +36,24 @@ test('all distributions reconcile to the same period-end snapshot', () => {
   assert.equal(dates.length, 60);
   assert.ok(series.slice(-20).reduce((n, p) => n + p.closed - p.added, 0) > 0);
 });
+test('daily resolved counts solved or mainline entries once per bug per Shanghai day', () => {
+  const sample: Bug = { ...bug, createdAt: '2026-10-19T00:00:00.000Z', currentStatus: '已关闭', history: [
+    { at: '2026-10-19T00:00:00.000Z', status: '待处理' },
+    { at: '2026-10-20T15:59:59.000Z', status: '已解决' },
+    { at: '2026-10-20T16:00:00.000Z', status: '主线测试中' },
+    { at: '2026-10-21T02:00:00.000Z', status: '主线测试中' },
+    { at: '2026-10-21T03:00:00.000Z', status: '重新打开' },
+    { at: '2026-10-21T04:00:00.000Z', status: '已解决' },
+    { at: '2026-10-21T05:00:00.000Z', status: '主线测试中' },
+    { at: '2026-10-22T02:00:00.000Z', status: '已修复' },
+    { at: '2026-10-22T03:00:00.000Z', status: '已关闭' }
+  ] };
+  const days = ['2026-10-19', '2026-10-20', '2026-10-21', '2026-10-22'];
+  assert.deepEqual(trend([sample], days, '+08:00').map(row => row.resolved), [0, 1, 1, 0]);
+  const second = { ...sample, id: 'second' };
+  assert.equal(trend([sample, second], days, '+08:00')[2].resolved, 2);
+  assert.equal(trend([sample], ['2026-10-20'], '+08:00', '2026-10-20T15:00:00.000Z')[0].resolved, 0);
+});
 test('source events are chronological and current states match final events', () => {
   assert.equal(new Set(mockBugs.map(b => b.id)).size, mockBugs.length);
   for (const b of mockBugs) {

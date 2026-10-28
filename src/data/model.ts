@@ -47,6 +47,7 @@ export function trend(bugs: Bug[], dates: string[], offset = 'Z', cutoff?: strin
     const s = summarize(snapshot(bugs, end));
     return { date, added: bugs.filter(b => inDay(b.createdAt)).length,
       closed: bugs.reduce((n, b) => n + b.history.filter((e, i) => inDay(e.at) && e.status === '已关闭' && b.history[i - 1]?.status !== '已关闭').length, 0),
+      resolved: bugs.filter(b => b.history.some((e, i) => inDay(e.at) && (e.status === '已解决' || e.status === '主线测试中') && b.history[i - 1]?.status !== e.status)).length,
       open: s.open, p0: s.p0, p1: s.p1, p01: s.p01 };
   });
 }
