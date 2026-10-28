@@ -62,7 +62,7 @@ export default function App() {
     grid: { left: 43, right: 45, top: 66, bottom: 70 },
     xAxis: { ...axis, type: 'category', data: rangeDates.map(d => d.slice(5).replace('-', '/')), axisLabel: { color: '#74839a', interval: desktopDateInterval }, splitLine: { show: false } },
     yAxis: [{ ...axis, type: 'value', name: '每日数量', nameTextStyle: { color: '#74839a', padding: [0, 0, 8, 0] }, min: 0 }, { ...axis, type: 'value', name: '未关闭存量', nameTextStyle: { color: '#74839a', padding: [0, 0, 8, 0] }, min: 0, splitLine: { show: false } }],
-    dataZoom: [{ type: 'inside', start: 0, end: 100 }, { type: 'slider', bottom: 5, height: 22, borderColor: '#2b3545', backgroundColor: '#111925', fillerColor: '#526b9322', handleStyle: { color: '#74849b', borderWidth: 0 }, moveHandleSize: 0, textStyle, dataBackground: { lineStyle: { color: '#526078' }, areaStyle: { color: '#26334a' } }, selectedDataBackground: { lineStyle: { color: '#8393ac' }, areaStyle: { color: '#374b6b' } } }],
+    dataZoom: [{ type: 'slider', start: 0, end: 100, brushSelect: false, bottom: 5, height: 22, borderColor: '#2b3545', backgroundColor: '#111925', fillerColor: '#526b9322', handleStyle: { color: '#74849b', borderWidth: 0 }, moveHandleSize: 0, textStyle, dataBackground: { lineStyle: { color: '#526078' }, areaStyle: { color: '#26334a' } }, selectedDataBackground: { lineStyle: { color: '#8393ac' }, areaStyle: { color: '#374b6b' } } }],
     series: [
       { name: '每日新增', type: 'bar', data: points.map(p => p.added), itemStyle: { color: C.blue, opacity: .78, borderRadius: [2, 2, 0, 0] }, barMaxWidth: 8, barGap: '25%' },
       { name: '每日关闭', type: 'bar', data: points.map(p => p.closed), itemStyle: { color: C.green, opacity: .72, borderRadius: [2, 2, 0, 0] }, barMaxWidth: 8 },
